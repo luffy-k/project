@@ -1,0 +1,19 @@
+.start{
+    margin-top:150px;
+    font-size:8em;
+}
+body{
+    margin:70px 0 100px;
+}
+.navbar-footer-menu{
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+.navbar-footer-menu li{
+    width:30%;
+    text-align:center;
+    display:inline-block;
+    line-height:60px;
+}
+

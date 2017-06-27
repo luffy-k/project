@@ -1,0 +1,36 @@
+<div ng-include="'tpl/include/header.html'"></div>
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <form ng-hide="succMsg||errMsg">
+        <div class="form-group">
+          <label for="uName">联系人:</label>
+          <input type="text" class="form-control" id="uName" ng-model="order.uName"/>
+        </div>
+        <div class="form-group">
+          <label>性别:</label>
+          <div class="radio" id="sex">
+            <label>
+              <input type="radio" value="1" name="sex" ng-model="order.sex"/>先生
+            </label>
+            <label>
+              <input type="radio" value="2" name="sex" ng-model="order.sex"/>女士
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="tel">联系电话:</label>
+          <input type="text" class="form-control" id="tel" ng-model="order.tel"/>
+        </div>
+        <div class="form-group">
+          <label for="add">送餐地址:</label>
+          <textarea name="txt" id="add" cols="10" rows="5" class="form-control" ng-model="order.add" ></textarea>
+        </div>
+        <input type="button" value="提交订单" class="btn btn-success btn-block" ng-click="submitOrder()"/>
+      </form>
+      <p ng-show="succMsg" class="alert alert-success">{{succMsg}}</p>
+      <p ng-show="errMsg" class="alert alert-danger">{{errMsg}}</p>
+    </div>
+  </div>
+</div>
+<div ng-include="'tpl/include/footer.html'"></div>

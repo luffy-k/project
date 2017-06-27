@@ -1,0 +1,148 @@
+@charset "UTF-8";
+/**
+ *
+ * @authors Your Name (you@example.org)
+ * @date    2016-12-10 23:32:42
+ * @version $Id$
+ */
+.icon-greens{
+  background-color:#00A148;
+  color:#fff;
+}
+.icon-fish{
+  background-color:#4DA9FE;
+  color:#fff;
+}
+a{
+  color:#999;
+}
+a:hover,
+a:focus,
+a.hover{
+  color:#666;
+  text-decoration: none;
+}
+a:hover:not(:focus)>span,
+a.hover>span{
+  color:#00A148;
+}
+.fixed-top,
+.fixed-bottom {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+}
+.fixed-top {
+  top: 0;
+}
+.fixed-bottom {
+  bottom: 0;
+}
+.max_w{
+  max-width:768px;
+  margin:0 auto;
+  margin:0px\0;  /* ie 8/9/10/Opera - for ie8/ie10/Opera */
+}
+.min_h{
+  min-height:1000px;
+}
+.bt1{
+  border-top:1px solid #ccc;
+}
+.fz3{
+  font-size:3rem;
+}
+.bgc{
+   background-color:#fff;
+ }
+.bgc1{
+  background-color: #00A148;
+  color:#fff;
+}
+.bgc1 a,
+.bgc1 a:hover,
+header a:hover:not(:focus)>span{
+  color:#fff;
+}
+.bgc2{
+  background-color:#EFF0F4;
+}
+.mt1{
+  margin-top:10px;
+}
+.mt6{
+  margin-top:60px;
+}
+.ml1{
+  margin-left:10px;
+}
+.pd3{
+  padding:3px;
+  border-radius:3px;
+  color:#fff;
+}
+.plr{
+  padding-left:15px;
+  padding-right:15px;
+}
+.ptb6{
+  padding-top:60px;
+  padding-bottom:60px;
+}
+.vam{
+  vertical-align: middle;
+}
+.price,
+.total{
+  color:#f11;
+  font-size:1.8rem;
+}
+.total{
+  display:inline-block;
+  min-width:56px;
+}
+.numBox{
+  border:1px solid #ddd;
+  border-radius:5px;
+  font-size:1.8rem;
+}
+.numBox>a>span{
+  display:inline-block;
+  padding:8px;
+}
+.count{
+  display:inline-block;
+  width:30px;
+  text-align:center;
+}
+
+.btn-submit{
+  font-size:1.8rem;
+  display:block;
+  padding:15px;
+}
+/*****iPhone5*****/
+@media screen and (min-width:320px) and (max-width:359px){
+  .fz3{
+    font-size:2rem;
+  }
+  .btn-submit{
+    padding:15px 8px;
+  }
+}
+/*****屏幕大于435px的边距样式调整*****/
+@media screen and (min-width:435px) and (max-width:499px){
+  main li>div:nth-child(2),
+  footer div>div:nth-child(2){
+    margin-left:5%;
+    margin-right:5%;
+  }
+}
+@media screen and (min-width:500px){
+  main li>div:nth-child(2),
+  footer div>div:nth-child(2){
+    margin-left:10%;
+    margin-right:10%;
+  }
+}

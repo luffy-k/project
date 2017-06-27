@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-cn" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap 101 Template</title>
+  <link href="css/kugou.css" rel="stylesheet">
+  <link href="css/animate.css" rel="stylesheet"/>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+  <script src="js/jquery-1.11.3.js"></script>
+  <script src="js/angular.js"></script>
+  <script src="js/kugou.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</head>
+<body  ng-controller="myCtrl">
+  <div ng-include="'data/include/header.html'"></div>
+  <div class="banner">
+    <div class="carousel slide" data-ride="carousel" data-interval="3000" id="banner">
+      <div class="carousel-inner"></div>
+      <a href="#banner" class="carousel-control left" data-slide="prev"><b></b></a>
+      <a href="#banner" class="carousel-control right" data-slide="next"><b></b></a>
+      <ul class="carousel-indicators"></ul>
+    </div>
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-xs-12" id="top1">
+          <div class="clearfix bigTitle">
+            <h2 class="pull-left"><span>精选</span>歌单</h2>
+            <a href="#" class="pull-right more">更多</a>
+          </div>
+          <div class="tabList" ng-repeat="tab in tabData">
+            <img ng-src="img/{{tab.img}}" class="img-responsive"/>
+            <p class="count"><b></b>{{tab.num}}万</p>
+            <div class="title">
+              <p>{{tab.title}}</p>
+              <p>{{tab.name}}</p>
+            </div>
+            <div class="shade"><a href="{{tab.url}}"></a></div>
+          </div>
+        </div>
+        <div class="col-sm-4 col-xs-6" id="top2">
+          <div class="clearfix bigTitle">
+            <h2 class="pull-left"><span>热门</span>榜单</h2>
+            <a href="#" class="pull-right more">更多</a>
+          </div>
+          <div class="rankList clearfix" ng-repeat="rank in rankData">
+            <img ng-src="img/{{rank.img}}" class="img-responsive"/>
+            <dl>
+              <dt>{{rank.title}}</dt>
+              <dd>1 . {{rank.first}}</dd>
+              <dd>2 . {{rank.second}}</dd>
+            </dl>
+            <b></b>
+            <div class="shade"><a href="{{rank.url}}"></a></div>
+          </div>
+        </div>
+        <div class="col-sm-12 hidden-xs adv">
+          <a href="#"><img src="img/hardware.jpg" class="img-responsive"></a>
+        </div>
+        <div class="col-sm-4 col-xs-6 col-sm-push-8">
+          <div class="clearfix bigTitle">
+            <h2 class="pull-left"><span>推荐</span>MV</h2>
+            <a href="#" class="pull-right more">更多</a>
+          </div>
+          <div class="MVList" ng-repeat="mv in MVData">
+            <img ng-src="img/{{mv.img}}" class="img-responsive"/>
+            <div class="{{mv.class}}">
+              <p><a>{{mv.title1}}</a></p>
+              <p>{{mv.title2}}</p>
+            </div>
+            <div class="shade"><a href="{{mv.url}}" class="playMV"></a></div>
+          </div>
+        </div>
+        <div class="col-sm-8 col-xs-12 col-sm-pull-4">
+          <div class="clearfix bigTitle">
+            <h2 class="pull-left"><span>新歌</span>首发</h2>
+            <ul class="nav nav-pills pull-left musicNav" id="musicNav1">
+              <li class="active" value="0"><a href="#">华语</a></li>
+              <li value="1"><a href="#">欧美</a></li>
+              <li value="2"><a href="#">韩国</a></li>
+              <li value="3"><a href="#">日本</a></li>
+            </ul>
+            <a href="#" class="pull-right btn btn-default btn-play hidden-sm"><b></b>全部播放</a>
+          </div>
+          <div class="musicList">
+            <ul class="list-unstyled">
+              <li ng-repeat="music in musicData track by $index">
+                <a href="{{music.url}}">
+                  <span>{{music.sing}} - {{music.song}}<b ng-show={{music.isNew}}></b></span>
+                  <span class="pull-right"><s></s>{{music.time}}</span>
+                </a>
+              </li>
+            </ul>
+            <p id="num1">
+              <em class="prev disabled"></em>
+              <span>1/3</span>
+              <em class="next"></em>
+            </p>
+          </div>
+        </div>
+        <div class="col-sm-12 hidden-xs adv">
+          <a href="#"><img src="img/T1OjC7B_Cs1RCvBVdK.jpg" class="img-responsive"></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8 col-xs-12">
+          <div class="clearfix bigTitle">
+            <h2 class="pull-left"><span>热门</span>电台</h2>
+            <a href="#" class="pull-right more">更多</a>
+          </div>
+          <div class="radioList" ng-repeat="radio in radioData">
+            <img ng-src="img/{{radio.img}}" class="img-responsive">
+            <p class="text-center"><a href="{{radio.url}}">{{radio.title}}</a></p>
+            <div class="shade">
+              <img src="img/radio.png" class="img-responsive">
+              <a href="#" class="playRadio"></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 col-xs-12">
+          <div class="clearfix bigTitle">
+            <h2 class="pull-left"><span>热门</span>歌手</h2>
+            <ul class="pull-left nav-pills nav musicNav hidden-md hidden-sm" id="musicNav2">
+              <li class="active" ng-mouseenter="singNav(0,$event)"><a href="#">华语</a></li>
+              <li ng-mouseenter="singNav(1,$event)"><a href="#">欧美</a></li>
+              <li ng-mouseenter="singNav(2,$event)"><a href="#">韩国</a></li>
+            </ul>
+            <a href="#" class="pull-right more">更多</a>
+          </div>
+          <div class="clearfix singList">
+            <div ng-repeat="data in singData track by $index">
+              <img ng-src="img/{{data.img}}" class="img-responsive">
+              <div class="title">
+                <p>{{data.name}}</p>
+              </div>
+              <div class="shade"></div>
+            </div>
+          </div>
+          <div class="clearfix num">
+            <ul class="text-center list-inline" id="num2">
+              <li class="hover" ng-mouseenter="singNum(0,$event)"></li>
+              <li ng-mouseenter="singNum(1,$event)"></li>
+              <li ng-mouseenter="singNum(2,$event)"></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-12 hidden-xs adv">
+          <a href="#"><img src="img/20160726093437213.jpg" class="img-responsive"></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="clearfix bigTitle">
+            <h2 class="pull-left"><span>合作</span>伙伴</h2>
+          </div>
+          <div class="table-responsive">
+            <table class="partnerList">
+              <tbody>
+                <tr ng-repeat="data in partnerData">
+                  <td ng-repeat="val in data">
+                    <a href="{{val.url}}"><img ng-src="img/{{val.img}}" class="img-responsive"/></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="clearfix bigTitle">
+            <h2 class="pull-left"><span>友情</span>链接</h2>
+            <a href="#" class="pull-right more">更多</a>
+          </div>
+          <div class="linkList">
+            <ul class="list-inline">
+              <li ng-repeat="link in linkData">
+                <a href="{{link.url}}">{{link.txt}}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div ng-include="'data/include/footer.html'"></div>
+  <a href="#" class="btn-top" ng-click="btnTop()"></a>
+</body>
+</html>
